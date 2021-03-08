@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-with open("README.rst", "r", encoding="utf-8") as f:
+with open("README.md", "r", encoding="utf-8") as f:
     readme = f.read()
 
 setup(
@@ -8,7 +8,7 @@ setup(
     version="0.0.1",
     description="Some utilities for discord.py. Making Discord bot development easier.",
     long_description=readme,
-    long_description_content_type="text/x-rst",
+    long_description_content_type="text/markdown",
     url="https://github.com/Rishiraj0100/discoutils",
     author="Rishi Raj",
     author_email="rishi0100raj@gmail.com",

@@ -25,7 +25,12 @@ class CMDs(command.Cog, name="discoCMDs"):
     if "$mention" in response:
       response = response.replace("$mention", user.name)
       
-    await ctx.send(response).add_reaction("🤣).add_reaction("😂")
+    try:
+      msg = await ctx.send(response)
+      await msg.add_reaction("🤣)
+      await msg.add_reaction("😂")
+    except:
+      pass
     
 def setup(bot: commands.Bot):
   bot.add_cog(CMDs)              

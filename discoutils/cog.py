@@ -32,5 +32,32 @@ class CMDs(commands.Cog, name="discoCMDs"):
     except:
       pass
     
+  @commands.command()
+  async def load(self,ctx,cog_name):
+    '''
+    This command is used to load cogs easily.
+    Usage - load [cog_name]
+    Example - load cogs.moderation
+    '''
+    try:
+      self.bot.load_extension(f"{name}")
+    except Exception as e:
+      retrun await ctx.send(f"The cog could not be loaded due to error - \n```{e}```")
+    await ctx.send(f"{name} extension loaded successfully!")
+     
+  
+  @commands.command()
+  async def unload(self,ctx,cog_name):
+    '''
+    This command is used to unload cogs easily.
+    Usage - unload [cog_name]
+    Example - unload cogs.moderation
+    '''
+    try:
+      self.bot.unload_extension(f"{name}")
+    except Exception as e:
+      retrun await ctx.send(f"The cog could not be unloaded due to error - \n```{e}```")
+    await ctx.send(f"{name} extension unloaded successfully!")
+    
 def setup(bot: commands.Bot):
   bot.add_cog(CMDs)

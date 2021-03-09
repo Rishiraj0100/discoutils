@@ -33,4 +33,4 @@ class CMDs(commands.Cog, name="discoCMDs"):
       pass
     
 def setup(bot: commands.Bot):
-  bot.add_cog(CMDs)
+  bot.add_cog(CMDs(bot))

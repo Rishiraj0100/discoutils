@@ -27,7 +27,7 @@ class CMDs(command.Cog, name="discoCMDs"):
       
     try:
       msg = await ctx.send(response)
-      await msg.add_reaction("🤣)
+      await msg.add_reaction("🤣")
       await msg.add_reaction("😂")
     except:
       pass

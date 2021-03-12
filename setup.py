@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name="discoutils",
-    version="0.0.2",
+    version="0.0.3",
     description="Some utilities for discord.py. Making Discord bot development easier.",
     long_description=readme,
     long_description_content_type="text/markdown",

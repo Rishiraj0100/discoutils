@@ -29,6 +29,7 @@ import discord, json, random
 from discord.ext import commands
 
 class fun(commands.Cog, name="fun"):
+  """Fun Commands"""
   def __init__(self, bot):
     self.bot = bot
   
@@ -39,8 +40,8 @@ class fun(commands.Cog, name="fun"):
       • user
         use id or mention a user to get message
     """
-    with open("discoutils/assets/kill.json", "r") as f:
-      kill = json.load(f)
+    kill = requests.get("https://raw.githubusercontent.com/Rishiraj0100/discoutils/main/discoutils/assets/kill.json").json()
+
       
     kills = kill["kills"]
     

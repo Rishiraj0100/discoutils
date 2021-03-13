@@ -28,7 +28,7 @@ SOFTWARE.
 import discord, json, random
 from discord.ext import commands
 
-class fun(commands.Cog, name="discoCMDs"):
+class fun(commands.Cog, name="fun"):
   def __init__(self, bot):
     self.bot = bot
   

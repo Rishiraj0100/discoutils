@@ -10,7 +10,7 @@ pip install discoutils
 There are two help commands currently but soon there will be more.
 ## MinimalEmbedHelp
 
-[![MinimalEmbedHelp.png](https://github.com/Rishiraj0100/discoutils/blob/v0.0.3-beta/docs/img/Screenshot_20210309-130459.png)](https://raw.githubusercontent.com/Rishiraj0100/discoutils/v0.0.3-beta/docs/img/Screenshot_20210309-130459.png)
+[![MinimalEmbedHelp.png](https://github.com/Rishiraj0100/discoutils/blob/main/docs/img/Screenshot_20210309-130459.png)](https://raw.githubusercontent.com/Rishiraj0100/discoutils/main/docs/img/Screenshot_20210309-130459.png)
 ```py
 
 import discord
@@ -22,7 +22,7 @@ bot = commands.Bot(command_prefix=".", help_command=MinimalEmbedHelp())
 
 ## DefaultEmbedHelp
 
-[![DefaultEmbedHelp.png](https://github.com/Rishiraj0100/discoutils/blob/v0.0.3-beta/docs/img/Screenshot_20210309-130522.png)](https://raw.githubusercontent.com/Rishiraj0100/discoutils/v0.0.3-beta/docs/img/Screenshot_20210309-130522.png)
+[![DefaultEmbedHelp.png](https://github.com/Rishiraj0100/discoutils/blob/main/docs/img/Screenshot_20210309-130522.png)](https://raw.githubusercontent.com/Rishiraj0100/discoutils/main/docs/img/Screenshot_20210309-130522.png)
 
 ```py
 

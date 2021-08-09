@@ -37,7 +37,10 @@ class MinimalEmbedHelp(commands.MinimalHelpCommand):
     channel = self.get_destination()
     embeds = []
     for page in self.paginator.pages:
-      embeds.append(discord.Embed(description=page))
+      e = discord.Embed(description=page)
+      if self.options.get("color"):
+      	e.color=self.options.get("color")
+      embeds.append(e)
     await channel.send(embeds=embeds)
 
 class DefaultEmbedHelp(commands.DefaultHelpCommand):
@@ -49,5 +52,8 @@ class DefaultEmbedHelp(commands.DefaultHelpCommand):
     channel = self.get_destination()
     embeds = []
     for page in self.paginator.pages:
-      embeds.append(discord.Embed(description=page))
+      e = discord.Embed(description=page)
+      if self.options.get("color"):
+      	e.color=self.options.get("color")
+      embeds.append(e)
     await channel.send(embeds=embeds)

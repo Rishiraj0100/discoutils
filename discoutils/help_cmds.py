@@ -35,8 +35,10 @@ class MinimalEmbedHelp(commands.MinimalHelpCommand):
     
   async def send_pages(self):
     channel = self.get_destination()
-    embed = discord.Embed(description=self.paginator.pages[0])
-    await channel.send(embed=embed)
+    embeds = []
+    for page in self.paginator.pages:
+      embeds.append(discord.Embed(description=page))
+    await channel.send(embeds=embeds)
 
 class DefaultEmbedHelp(commands.DefaultHelpCommand):
   def __init__(self, **options):
@@ -45,5 +47,7 @@ class DefaultEmbedHelp(commands.DefaultHelpCommand):
     
   async def send_pages(self):
     channel = self.get_destination()
-    embed = discord.Embed(description=self.paginator.pages[0])
-    await channel.send(embed=embed)
+    embeds = []
+    for page in self.paginator.pages:
+      embeds.append(discord.Embed(description=page))
+    await channel.send(embeds=embeds)

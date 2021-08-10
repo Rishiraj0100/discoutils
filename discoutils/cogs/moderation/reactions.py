@@ -5,7 +5,7 @@ import typing
 from discoutils.cogs import BaseCog
 
 
-class mod(BaseCog):
+class mod(BaseCog, name="moderation"):
   @commands.command(aliases = ["crs"])
   @commands.has_permissions(manage_messages = True)
   @commands.bot_has_permissions(manage_messages = True)

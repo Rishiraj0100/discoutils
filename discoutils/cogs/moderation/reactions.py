@@ -8,6 +8,7 @@ from discoutils.cogs import BaseCog
 class mod(BaseCog):
   @commands.command(aliases = ["crs"])
   @commands.has_permissions(manage_messages = True)
+  @commands.bot_has_permissions(manage_messages = True)
   async def clearreactions(self, ctx, message: int):
     try:
       msg = await ctx.channel.fetch_message(message)

@@ -27,8 +27,8 @@ class mod(BaseCog, name="moderation"):
       
     await ctx.channel.purge(limit=amount, check=check)
 
-  @clean.command(aliases=["rs"])
-  async def clearreactions(self, ctx, message: int):
+  @clean.command(name="reactions", aliases=["rs"])
+  async def clear_reactions(self, ctx, message: int):
     """clears all reactions on a message
 
         Parameters

@@ -32,7 +32,7 @@ class usermod(BaseCog, name="moderation"):
 
   @commands.command()
   @commands.has_permissions(ban_members=True)
-  @commands.bot_has_parmissions(ban_members=True)
+  @commands.bot_has_permissions(ban_members=True)
   async def ban(self, ctx, member: discord.Member, *, reason: typing.Optional[str] = None):
     """ban someone
 

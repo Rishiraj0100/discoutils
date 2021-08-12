@@ -103,8 +103,8 @@ class usermod(BaseCog, name="moderation"):
   @commands.group(name="role", invoke_without_command=True)
   async def role(self, ctx):
     e = discord.Embed(title="Role Commands")
-    e.add_field(name=f"{ctx.prefix}{ctx.command} add `@user @role`, value="Adds role to the given user")
-    e.add_field(name=f"{ctx.prefix}{ctx.command} remove `@user @role`, value="Remove role from the given user")
+    e.add_field(name=f"{ctx.prefix}{ctx.command} add `@user @role`", value="Adds role to the given user")
+    e.add_field(name=f"{ctx.prefix}{ctx.command} remove `@user @role`", value="Remove role from the given user")
     await ctx.send(embed=e)
 
   @role.command(name="add')

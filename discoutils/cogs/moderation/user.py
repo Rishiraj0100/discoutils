@@ -107,7 +107,7 @@ class usermod(BaseCog, name="moderation"):
     e.add_field(name=f"{ctx.prefix}{ctx.command} remove `@user @role`", value="Remove role from the given user")
     await ctx.send(embed=e)
 
-  @role.command(name="add')
+  @role.command(name="add")
   @commands.guild_only()
   @commands.has_permissions(manage_roles=True)
   @commands.bot_has_permissions(manage_roles=True)

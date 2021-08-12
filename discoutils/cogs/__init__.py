@@ -17,6 +17,7 @@ class BaseCog(commands.Cog):
         error: commands.CommandError
             The Exception raised.
         """
+    # handler
     if hasattr(ctx.command, 'on_error'):
       return
 
@@ -41,6 +42,8 @@ class BaseCog(commands.Cog):
     elif isinstance(error, commands.MissingPermissions):
       fmt = self.get_missing_perms(error)
       return await ctx.reply(content=f"You don't have {fmt} permission(s) to run this command.")
+    elif isinstance(error, commands.MissingRequiredArgument):
+      return await ctx.reply(content=str(error))
     else:
       print('Ignoring exception in command {}:'.format(ctx.command),
             file=sys.stderr)
@@ -60,6 +63,5 @@ class BaseCog(commands.Cog):
       fmt = '{}, and {}'.format(", ".join(missing[:-1]), missing[-1])
     else:
       fmt = ' and '.join(missing)
-    #message = f"I don't have {fmt} permission(s) to run this command."
     return fmt
   

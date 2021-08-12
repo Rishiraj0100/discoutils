@@ -5,7 +5,7 @@ import typing
 from discoutils.cogs import BaseCog
 
 
-class mod(BaseCog, name="moderation"):
+class messagemod(BaseCog, name="moderation"):
   @commands.group(aliases=["c","clear"], invoke_without_command=True)
   @commands.has_permissions(manage_messages = True)
   @commands.bot_has_permissions(manage_messages = True)
@@ -123,4 +123,4 @@ class mod(BaseCog, name="moderation"):
 
 
 def setup(bot):
-  bot.add_cog(mod(bot))
+  bot.add_cog(messagemod(bot))

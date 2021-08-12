@@ -66,3 +66,18 @@ class BaseCog(commands.Cog):
       fmt = ' and '.join(missing)
     return fmt
   
+  def is_int_formatting(self, exc):
+    if not isinstance(exc, commands.BadArgument):
+      return False
+
+    exc = str(exc)
+
+    if not exc.startswith('Converting to "'):
+      return False
+
+    exc = exc.lstrip('Converting to "')
+    if str(exc[0:3]) == "int":
+      return True
+    
+    return False
+    

@@ -1,6 +1,6 @@
 import discord, requests
 from discord.ext import commands
-from discoutils.cogs import BaseCog
+from .. import BaseCog
 
 class Kill(BaseCog, name="fun"):
   "Fun commands"

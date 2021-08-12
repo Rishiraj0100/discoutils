@@ -28,4 +28,4 @@ class Kill(BaseCog, name="fun"):
 
 
 def setup(bot):
-  bot.add_cog(Kill(bot))
+  bot.add_cog(Kill(bot), override=True)

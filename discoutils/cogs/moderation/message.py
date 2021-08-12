@@ -7,6 +7,7 @@ from discoutils.cogs import BaseCog
 
 class messagemod(BaseCog, name="moderation"):
   @commands.group(aliases=["c","clear"], invoke_without_command=True)
+  @commands.guild_only()
   @commands.has_permissions(manage_messages = True)
   @commands.bot_has_permissions(manage_messages = True)
   async def clean(self, ctx, amount: typing.Optional[int] = 5, member: discord.Member = None):
@@ -28,23 +29,17 @@ class messagemod(BaseCog, name="moderation"):
     await ctx.channel.purge(limit=amount, check=check)
 
   @clean.command(name="reactions", aliases=["rs"])
-  async def clear_reactions(self, ctx, message: int):
+  async def clear_reactions(self, ctx, message: discord.Message):
     """clears all reactions on a message
 
         Parameters
         -----------
-        • message - the id of the message from which to remove the reactions
+        • message - the id or link of the message from which to the reactions are to be removed
         """
-    try:
-      msg = await ctx.channel.fetch_message(message)
-    except:
-      return await ctx.reply(content="Message not found with id {}".format(message))
 
     if msg:
       await msg.clear_reactions()
       return await ctx.reply(content="Successfully cleared all the reactions of that message")
-
-    return await ctx.reply(content="Message not found with id {}".format(message))
 
 
   @clean.command(name="reaction",aliases=["r"])
@@ -53,7 +48,7 @@ class messagemod(BaseCog, name="moderation"):
 
         Parameters
         ------------
-        • message - the message number from which to remove the reaction
+        • message - id or link of the message from which the reaction has to be removed
         • emoji - the reaction to remove from the message
         • user - the user of whom to reaction is removed, clears all reactions of that emoji is none given
         """

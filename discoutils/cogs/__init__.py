@@ -23,6 +23,7 @@ class BaseCog(commands.Cog):
 
 
     ignored = (commands.CommandNotFound, )
+    send_raw_error = (commands.MissingRequiredArgument, commands.MemberNotFound, commands.MessageNotFound,commands.RoleNotFound,commands.EmojiNotFound)
     error = getattr(error, 'original', error)
 
     if isinstance(error, ignored):
@@ -42,7 +43,7 @@ class BaseCog(commands.Cog):
     elif isinstance(error, commands.MissingPermissions):
       fmt = self.get_missing_perms(error)
       return await ctx.reply(content=f"You don't have {fmt} permission(s) to run this command.")
-    elif isinstance(error, commands.MissingRequiredArgument):
+    elif isinstance(error, send_raw_error):
       return await ctx.reply(content=str(error))
     else:
       print('Ignoring exception in command {}:'.format(ctx.command),

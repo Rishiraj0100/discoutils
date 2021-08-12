@@ -5,7 +5,7 @@ import typing
 from .. import BaseCog
 
 
-class messagemod(BaseCog, name="moderation"):
+class messagemod(BaseCog, name="Moderation"):
   @commands.group(aliases=["c","clear"], invoke_without_command=True)
   @commands.guild_only()
   @commands.has_permissions(manage_messages = True)

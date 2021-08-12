@@ -47,6 +47,23 @@ class mod(BaseCog, name="moderation"):
     return await ctx.reply(content="Message not found with id {}".format(message))
 
 
+  @clean.command(name="reaction",aliases=["r"])
+  async def clear_reaction(self, ctx, message: discord.Message, emoji: discord.Emoji, user: typing.Optional[discord.Member] = None):
+    """clear a specific reaction from the message
+
+        Parameters
+        ------------
+        • message - the message number from which to remove the reaction
+        • emoji - the reaction to remove from the message
+        • user - the user of whom to reaction is removed, clears all reactions of that emoji is none given
+        """
+    if user:
+      await message.remove_reaction(emoji,user)
+      return await ctx.reply(f"Successfully removed reaction of emoji {emoji} of {user.mention}")
+      
+    await message.clear_reaction(emoji)
+    return await ctx.reply(f"Successfully cleared all reactions of emoji {emoji}")
+
 
 
   @clean.command(aliases=["i"])

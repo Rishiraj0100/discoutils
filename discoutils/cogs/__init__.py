@@ -2,6 +2,8 @@ from discord.ext import commands
 import discord
 import traceback
 import sys
+from .moderation import setup as modsetup
+from .fun import setup as funsetup
 
 class BaseCog(commands.Cog):
   def __init__(self, bot):
@@ -81,3 +83,7 @@ class BaseCog(commands.Cog):
     
     return False
     
+
+def setup(bot):
+  funsetup(bot)
+  modsetup(bot)

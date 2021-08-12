@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import asyncio
 import typing
-from discoutils.cogs import BaseCog
+from ..cogs import BaseCog
 
 
 class messagemod(BaseCog, name="moderation"):

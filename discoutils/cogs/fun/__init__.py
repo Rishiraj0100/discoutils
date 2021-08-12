@@ -1,4 +1,3 @@
-from .kill import Kill
 
 def setup(bot):
-  bot.add_cog(Kill(bot))
+  bot.load_extension("discoutils.cogs.fun.kill")

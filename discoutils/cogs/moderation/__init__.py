@@ -1,6 +1,3 @@
-from .message import messagemod
-from .user import usermod
-
 def setup(bot):
-  bot.add_cog(messagemod(bot))
-  bot.add_cog(usermod(bot))
+  bot.load_extension("discoutils.cogs.moderation.message")
+  bot.load_extension("discoutils.cogs.moderation.user")

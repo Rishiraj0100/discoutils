@@ -7,29 +7,15 @@ import pprint
 class BaseCog(commands.Cog):
   def __init__(self, bot):
     self.bot = bot
-    self.bot.add_cog(self)
-    '''if self.qualified_name in bot.cogs:
+    if self.qualified_name in bot.cogs:
       cls = bot.get_cog(self.qualified_name)
-      cmds = {}
       if cls is not None:
-        cmd_attrs = cls.__cog_settings__
-        for cmd in self.__cog_commands__:
-          cmds[cmd.callback.__name__] = cmd
-          setattr(cls, cmd.callback.__name__, cmd)
-        for cmd in cls.__cog_commands__:
-          cmds[cmd.callback.__name__] = cmd
-          setattr(cls, cmd.callback.__name__, cmd)
-        self.__cog_commands__ = tuple(c._update_copy(cmd_attrs) for _, c in cmds.items())
-        cls.cog_command_error = self.cog_command_error
-        self.bot.remove_cog(self.qualified_name)
-        self.bot.add_cog(self)
-        self._cls = cls
-        pprint.pprint(vars(cls))
-        print("cls hai")
+        cog = self._inject(self.bot)
+        self.bot.cogs[cog.__cog_name__] = cog
       else:
         self.bot.add_cog(self)
     else:
-      self.bot.add_cog(self)'''
+      self.bot.add_cog(self)
 
   async def cog_command_error(self, ctx, error):
     """The event triggered when an error is raised in this cpg while invoking a command.

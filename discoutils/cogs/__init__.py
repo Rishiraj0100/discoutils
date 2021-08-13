@@ -9,11 +9,13 @@ class BaseCog(commands.Cog):
     self.bot = bot
     if self.qualified_name in bot.cogs:
       cls = bot.get_cog(self.qualified_name)
+      cmds = {}
       if cls is not None:
         cmd_attrs = cls.__cog_settings__
-        cls.__cog_commands__ = tuple(c._update_copy(cmd_attrs) for c in cls.__cog_commands__)
         for cmd in self.__cog_commands__:
+          cmds[cmd.callback.__name__] = cmd
           setattr(cls, cmd.callback.__name__, cmd)
+        cls.__cog_commands__ = tuple(c._update_copy(cmd_attrs) for c in cmds)
         self.bot.remove_cog(self.qualified_name)
         self.bot.add_cog(cls)
         pprint.pprint(vars(cls))

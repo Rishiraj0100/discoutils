@@ -2,6 +2,7 @@ from discord.ext import commands
 import discord
 import traceback
 import sys
+import pprint
 
 class BaseCog(commands.Cog):
   def __init__(self, bot):
@@ -15,6 +16,7 @@ class BaseCog(commands.Cog):
           setattr(cls, cmd.callback.__name__, cmd)
         self.bot.remove_cog(self.qualified_name)
         self.bot.add_cog(cls)
+        pprint.pprint(vars(cls))
         print("cls hai")
       else:
         self.bot.add_cog(self)

@@ -118,4 +118,4 @@ class messagemod(BaseCog, name="moderation"):
 
 
 def setup(bot):
-  bot.add_cog(messagemod(bot), override=True)
+  messagemod(bot)

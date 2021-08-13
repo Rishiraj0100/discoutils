@@ -13,7 +13,8 @@ class BaseCog(commands.Cog):
         cls.__cog_commands__ = tuple(c._update_copy(cmd_attrs) for c in cls.__cog_commands__)
         for cmd in self.__cog_commands__:
           setattr(cls, cmd.callback.__name__, cmd)
-        bot.remove_cog(cls.qualifed_name)
+        print(type(cls))
+        print(vars(cls))
         bot.add_cog(cls)
       else:
         self.bot.add_cog(self)

@@ -53,6 +53,9 @@ class BaseCog(commands.Cog):
       return await ctx.reply(content=f"You don't have {fmt} permission(s) to run this command.")
     elif isinstance(error, send_raw_error):
       return await ctx.reply(content=str(error))
+    elif isinstance(error, commands.BadArgument) and self.is_int_formatting(error):
+      param = self.get_int_param(error)
+      return await ctx.send(f"The argument for parameter {param} should be integer/number")
     else:
       print('Ignoring exception in command {}:'.format(ctx.command),
             file=sys.stderr)
@@ -88,6 +91,11 @@ class BaseCog(commands.Cog):
     
     return False
     
+  def get_int_param(self, exc):
+    exc = str(exc)
+    exc = exc.replace('".', "")
+    param = exc.replace('Converting to "int" failed for parameter "', "")
+    return exc
 
 def setup(bot):
   bot.load_extension("discoutils.cogs.moderation")

@@ -55,7 +55,7 @@ class BaseCog(commands.Cog):
       return await ctx.reply(content=str(error))
     elif isinstance(error, commands.BadArgument) and self.is_int_formatting(error):
       param = self.get_int_param(error)
-      return await ctx.send(f"The argument for parameter {param} should be integer/number")
+      return await ctx.send(f"The argument for parameter `{param}` should be integer/number")
     else:
       print('Ignoring exception in command {}:'.format(ctx.command),
             file=sys.stderr)
@@ -95,7 +95,7 @@ class BaseCog(commands.Cog):
     exc = str(exc)
     exc = exc.replace('".', "")
     param = exc.replace('Converting to "int" failed for parameter "', "")
-    return exc
+    return param
 
 def setup(bot):
   bot.load_extension("discoutils.cogs.moderation")

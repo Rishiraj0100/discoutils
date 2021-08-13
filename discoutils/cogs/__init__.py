@@ -18,10 +18,11 @@ class BaseCog(commands.Cog):
         for cmd in cls.__cog_commands__:
           cmds[cmd.callback.__name__] = cmd
           setattr(cls, cmd.callback.__name__, cmd)
-        cls.__cog_commands__ = tuple(c._update_copy(cmd_attrs) for _, c in cmds.items())
+        self.__cog_commands__ = tuple(c._update_copy(cmd_attrs) for _, c in cmds.items())
         cls.cog_command_error = self.cog_command_error
         self.bot.remove_cog(self.qualified_name)
-        self.bot.add_cog(cls)
+        self.bot.add_cog(self)
+        self._cls = cls
         pprint.pprint(vars(cls))
         print("cls hai")
       else:

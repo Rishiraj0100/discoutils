@@ -37,7 +37,7 @@ class BaseCog(commands.Cog):
       else:
         self.bot.add_cog(self)
     else:'''
-    self.bot._add_cog(self)
+    self.bot._add_cog(self, overwrite=True)
 
   async def cog_command_error(self, ctx, error):
     """The event triggered when an error is raised in this cpg while invoking a command.

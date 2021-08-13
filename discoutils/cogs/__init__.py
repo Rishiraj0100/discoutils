@@ -17,7 +17,7 @@ class BaseCog(commands.Cog):
       if cls is not None:
         cog = self._inject(self.bot)
         if not hasattr(self.bot, "_updater_cogs"):
-          setattr(self.bot, "_updater_cogs", _updater_cogs)
+          self.bot._updater_cogs = _updater_cogs
         self.bot._updater_cogs(cog)
       else:
         self.bot.add_cog(self)

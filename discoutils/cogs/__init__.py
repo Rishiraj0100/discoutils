@@ -9,7 +9,7 @@ def _add_cog(self, cog: commands.Cog, *, override: bool = False, overwrite: bool
     raise TypeError('cogs must derive from Cog')
 
   cog_name = cog.__cog_name__
-  existing = self.__cogs.get(cog_name)
+  existing = self.cogs.get(cog_name)
 
   if override and overwrite:
     raise ValueError("Overwrite and override, both should not be True")

@@ -4,6 +4,11 @@ import traceback
 import sys
 import pprint
 
+__all__ = ("BaseCog", "setup")
+
+def _updater_cogs(self, cog):
+  self.__cogs[cog.__cog_name__] = cog
+
 class BaseCog(commands.Cog):
   def __init__(self, bot):
     self.bot = bot
@@ -11,9 +16,9 @@ class BaseCog(commands.Cog):
       cls = bot.get_cog(self.qualified_name)
       if cls is not None:
         cog = self._inject(self.bot)
-        bot = self.bot
-        bot.__cogs[cog.__cog_name__] = cog
-        self.bot = bot
+        if not hasattr(self.bot, "_updater_cogs"):
+          setattr(self.bot, "_updater_cogs", _updater_cogs)
+        self.bot._updater_cogs(cog)
       else:
         self.bot.add_cog(self)
     else:

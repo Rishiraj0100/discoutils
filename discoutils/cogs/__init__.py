@@ -2,39 +2,7 @@ from discord.ext import commands
 import discord
 import traceback
 import sys
-import pprint
-'''
-def _add_cog(self, cog: commands.Cog, *, override: bool = False, overwrite: bool = False) -> None:
-  if not isinstance(cog, commands.Cog):
-    raise TypeError('cogs must derive from Cog')
 
-  cog_name = cog.__cog_name__
-  existing = self.cogs.get(cog_name)
-
-  if override and overwrite:
-    raise ValueError("Overwrite and override, both should not be True")
-
-  if existing is not None:
-    if override:
-      self.remove_cog(cog_name)
-    elif not overwrite:
-      raise discord.ClientException(f'Cog named {cog_name!r} already loaded')
-    elif overwrite:
-      for index, command in enumerate(self.__cog_commands__):
-        command.cog = cog
-        if command.parent is None:
-          try:
-            bot.add_command(command)
-          except Exception as e:
-            for to_undo in self.__cog_commands__[:index]:
-              if to_undo.parent is None:
-                bot.remove_command(to_undo.name)
-            raise e
-    else:
-     self.add_cog(cog, override)
-
-discord.ext.commands.bot.BotBase._add_cog = _add_cog
-'''
 class BaseCog(commands.Cog):
   def __init__(self, bot):
     self.bot = bot
@@ -48,7 +16,7 @@ class BaseCog(commands.Cog):
       self.bot.add_cog(self)
 
   async def cog_command_error(self, ctx, error):
-    """The event triggered when an error is raised in this cpg while invoking a command.
+    """The event triggered when an error is raised in this cog while invoking a command.
 
         Parameters
         ------------

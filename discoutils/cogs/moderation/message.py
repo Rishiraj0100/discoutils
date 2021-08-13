@@ -72,7 +72,7 @@ class messagemod(BaseCog, name="moderation"):
     deleted = 0
     async for m in ctx.channel.history(limit=200):
       if m.attachments:
-        await m.delete(reason=f"Action done by {ctx.author.name}#{ctx.author.discriminator}")
+        await m.delete()
         deleted += 1
         if images_to_delete == deleted:
           break
@@ -89,7 +89,7 @@ class messagemod(BaseCog, name="moderation"):
     deleted = 0
     async for m in ctx.channel.history(limit=200):
       if m.author.bot:
-        await m.delete(reason=f"Action done by {ctx.author.name}#{ctx.author.discriminator}")
+        await m.delete()
         deleted += 1
         if deleted == messages_to_delete:
           break
@@ -108,7 +108,7 @@ class messagemod(BaseCog, name="moderation"):
     async for m in ctx.channel.history(limit=200):
       if word in m.content.lower():
         if not m.id == ctx.message.id:
-          await m.delete(reason=f"Action done by {ctx.author.name}#{ctx.author.discriminator}")
+          await m.delete()
           deleted += 1
         if deleted == messages_to_delete:
           break

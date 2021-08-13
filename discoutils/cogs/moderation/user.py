@@ -156,4 +156,4 @@ class usermod(BaseCog, name="moderation"):
     
 
 def setup(bot):
-  bot.add_cog(usermod(bot), override=True)
+  usermod(bot)

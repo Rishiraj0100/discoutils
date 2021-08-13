@@ -4,20 +4,23 @@ import traceback
 import sys
 import pprint
 
-__all__ = ("BaseCog", "setup")
+class DiscoutilsCogBot(commands.Bot):
+  def _updater_cogs(self, cog):
+    self.__cogs[cog.__cog_name__] = cog
 
-def _updater_cogs(self, cog):
-  self.__cogs[cog.__cog_name__] = cog
+class DiscoutilsShardedCogBot(commands.AutoShardedBot):
+  def _updater_cogs(self, cog):
+    self.__cogs[cog.__cog_name__] = cog
 
 class BaseCog(commands.Cog):
   def __init__(self, bot):
+    if not isinstance(bot, (DiscoutilsCogBot, DiscoutilsShardedCogBot)):
+      raise TypeError("Your bot shoud must be an instance of DiscoutilsCogBot or DiscoutilsShardedCogBot")
     self.bot = bot
     if self.qualified_name in bot.cogs:
       cls = bot.get_cog(self.qualified_name)
       if cls is not None:
         cog = self._inject(self.bot)
-        if not hasattr(self.bot, "_updater_cogs"):
-          self.bot._updater_cogs = _updater_cogs
         self.bot._updater_cogs(self.bot, cog)
       else:
         self.bot.add_cog(self)

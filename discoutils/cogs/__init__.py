@@ -84,7 +84,7 @@ class BaseCog(commands.Cog):
       return False
 
     exc = exc.lstrip('Converting to "')
-    if str(exc[0:3]) == "int":
+    if str(exc[:4]) == 'int"':
       return True
     
     return False

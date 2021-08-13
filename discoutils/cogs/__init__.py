@@ -18,7 +18,7 @@ class BaseCog(commands.Cog):
         cog = self._inject(self.bot)
         if not hasattr(self.bot, "_updater_cogs"):
           self.bot._updater_cogs = _updater_cogs
-        self.bot._updater_cogs(cog)
+        self.bot._updater_cogs(self.bot, cog)
       else:
         self.bot.add_cog(self)
     else:

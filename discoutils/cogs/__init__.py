@@ -3,7 +3,7 @@ import discord
 import traceback
 import sys
 import pprint
-
+'''
 def _add_cog(self, cog: commands.Cog, *, override: bool = False, overwrite: bool = False) -> None:
   if not isinstance(cog, commands.Cog):
     raise TypeError('cogs must derive from Cog')
@@ -34,19 +34,18 @@ def _add_cog(self, cog: commands.Cog, *, override: bool = False, overwrite: bool
      self.add_cog(cog, override)
 
 discord.ext.commands.bot.BotBase._add_cog = _add_cog
-
+'''
 class BaseCog(commands.Cog):
   def __init__(self, bot):
     self.bot = bot
-    '''if self.qualified_name in bot.cogs:
+    if self.qualified_name in bot.cogs:
       cls = bot.get_cog(self.qualified_name)
       if cls is not None:
         cog = self._inject(self.bot)
-        self.bot.__cogs[cog.__cog_name__] = cog
       else:
         self.bot.add_cog(self)
-    else:'''
-    self.bot._add_cog(self, overwrite=True)
+    else:
+      self.bot.add_cog(self)
 
   async def cog_command_error(self, ctx, error):
     """The event triggered when an error is raised in this cpg while invoking a command.

@@ -83,8 +83,7 @@ class BaseCog(commands.Cog):
     if not exc.startswith('Converting to "'):
       return False
 
-    exc = exc.lstrip('Converting to "')
-    if str(exc[:4]) == 'int"':
+    if exc[:19] == 'Converting to "int"':
       return True
     
     return False

@@ -20,9 +20,18 @@ def _add_cog(self, cog: commands.Cog, *, override: bool = False, overwrite: bool
     elif not overwrite:
       raise discord.ClientException(f'Cog named {cog_name!r} already loaded')
     else:
-      self.remove_cog(cog_name)
-      cog = cog._inject(self)
-  self.add_cog(cog)
+      for index, command in enumerate(self.__cog_commands__):
+        command.cog = cog
+        if command.parent is None:
+          try:
+            bot.add_command(command)
+          except Exception as e:
+            for to_undo in self.__cog_commands__[:index]:
+              if to_undo.parent is None:
+                bot.remove_command(to_undo.name)
+            raise e
+
+  self.add_cog(cog, override)
 
 discord.ext.commands.bot.BotBase._add_cog = _add_cog
 

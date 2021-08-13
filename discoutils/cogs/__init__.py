@@ -6,8 +6,8 @@ import sys
 class BaseCog(commands.Cog):
   def __init__(self, bot):
     self.bot = bot
-    if self.qualified_name in self.bot.__cogs:
-      cls = self.bot.__cogs.get(self.qualified_name)
+    if self.qualified_name in bot.__cogs:
+      cls = bot.__cogs.get(self.qualified_name)
       if cls:
         cmd_attrs = cls.__cog_settings__
         cls.__cog_commands__ = tuple(c._update_copy(cmd_attrs) for c in cls.__cog_commands__)

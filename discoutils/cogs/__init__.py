@@ -21,7 +21,7 @@ class BaseCog(commands.Cog):
       cls = bot.get_cog(self.qualified_name)
       if cls is not None:
         cog = self._inject(self.bot)
-        self.bot._updater_cogs(self.bot, cog)
+        self.bot._updater_cogs(cog)
       else:
         self.bot.add_cog(self)
     else:

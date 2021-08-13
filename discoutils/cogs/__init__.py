@@ -4,7 +4,7 @@ import traceback
 import sys
 import pprint
 
-def add_cog(self, cog: commands.Cog, *, override: bool = False, overwrite: bool = False) -> None:
+def _add_cog(self, cog: commands.Cog, *, override: bool = False, overwrite: bool = False) -> None:
   if not isinstance(cog, commands.Cog):
     raise TypeError('cogs must derive from Cog')
 
@@ -20,12 +20,11 @@ def add_cog(self, cog: commands.Cog, *, override: bool = False, overwrite: bool 
     elif not overwrite:
       raise discord.ClientException(f'Cog named {cog_name!r} already loaded')
     else:
-      pass
+      self.remove_cog(cog_name)
+      cog = cog._inject(self)
+  self.add_cog(cog)
 
-  cog = cog._inject(self)
-  self.__cogs[cog_name] = cog
-
-discord.ext.commands.bot.BotBase.add_cog = add_cog
+discord.ext.commands.bot.BotBase._add_cog = _add_cog
 
 class BaseCog(commands.Cog):
   def __init__(self, bot):
@@ -38,7 +37,7 @@ class BaseCog(commands.Cog):
       else:
         self.bot.add_cog(self)
     else:'''
-    self.bot.add_cog(self)
+    self.bot._add_cog(self)
 
   async def cog_command_error(self, ctx, error):
     """The event triggered when an error is raised in this cpg while invoking a command.

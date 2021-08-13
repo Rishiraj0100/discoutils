@@ -7,7 +7,8 @@ import pprint
 class BaseCog(commands.Cog):
   def __init__(self, bot):
     self.bot = bot
-    if self.qualified_name in bot.cogs:
+    self.bot.add_cog(self)
+    '''if self.qualified_name in bot.cogs:
       cls = bot.get_cog(self.qualified_name)
       cmds = {}
       if cls is not None:
@@ -28,7 +29,7 @@ class BaseCog(commands.Cog):
       else:
         self.bot.add_cog(self)
     else:
-      self.bot.add_cog(self)
+      self.bot.add_cog(self)'''
 
   async def cog_command_error(self, ctx, error):
     """The event triggered when an error is raised in this cpg while invoking a command.

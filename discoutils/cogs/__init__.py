@@ -7,15 +7,14 @@ class BaseCog(commands.Cog):
   def __init__(self, bot):
     self.bot = bot
     if self.qualified_name in bot.cogs:
-      cls = bot.cogs.get(self.qualified_name)
-      cls=cls.__new__(cls)
+      cls = bot.get_cog(self.qualified_name)
       if cls is not None:
         cmd_attrs = cls.__cog_settings__
         cls.__cog_commands__ = tuple(c._update_copy(cmd_attrs) for c in cls.__cog_commands__)
         for cmd in self.__cog_commands__:
           setattr(cls, cmd.callback.__name__, cmd)
-        bot.remove_cog(self.qualified_name)
-        bot.add_cog(cls)
+        self.bot.remove_cog(self.qualified_name)
+        self.bot.add_cog(cls)
         print("cls hai")
       else:
         self.bot.add_cog(self)

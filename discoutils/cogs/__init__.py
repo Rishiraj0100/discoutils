@@ -8,7 +8,7 @@ class BaseCog(commands.Cog):
     self.bot = bot
     if self.qualified_name in bot.cogs:
       cls = bot.cogs.get(self.qualified_name)
-      cls=cls.__new__()
+      cls=cls.__new__(cls)
       if cls is not None:
         cmd_attrs = cls.__cog_settings__
         cls.__cog_commands__ = tuple(c._update_copy(cmd_attrs) for c in cls.__cog_commands__)

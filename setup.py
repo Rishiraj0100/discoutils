@@ -39,7 +39,6 @@ setup(
         "Programming Language :: Python :: 3.8",
     ],
     python_requires=">=3.8",
-    install_requires=["discord.py >=1, <2"],
     keywords="discord discord-py discord-bot utils utility",
     packages=find_packages(exclude=["docs", "tests"]),
     data_files=None,

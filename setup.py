@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-import re
+
 
 with open("README.md", "r", encoding="utf-8") as f:
     readme = f.read()
@@ -39,7 +39,7 @@ setup(
         "Programming Language :: Python :: 3.8",
     ],
     python_requires=">=3.8",
-    install_requires=["discord.py >=1,<2"],
+    install_requires=["discord.py >=1"],
     keywords="discord discord-py discord-bot utils utility",
     packages=find_packages(exclude=["docs", "tests"]),
     data_files=None,

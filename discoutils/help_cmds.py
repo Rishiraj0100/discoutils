@@ -4,7 +4,7 @@ from discord.ext import commands
 class MinimalEmbedHelp(commands.MinimalHelpCommand):
   def __init__(self, **options):
     self.options = options
-    self.embed_template = options.get("embed_template", discord.Embed)
+    self.embed_template = options.get("embed_template", discord.Embed) or discord.Embed
     if not isinstance(self.embed_template, discord.Embed):
       raise TypeError(f"Embed template must be a subclass of discord.Embed not {type(self.embed_template)!r}")
     super().__init__(**options)

@@ -5,8 +5,7 @@ class MinimalEmbedHelp(commands.MinimalHelpCommand):
   def __init__(self, **options):
     self.options = options
     self.embed_template = options.get("embed_template", discord.Embed) or discord.Embed
-    print(issubclass(self.embed_template, discord.Embed))
-    if not isinstance(self.embed_template, discord.Embed):
+    if not issubclass(self.embed_template, discord.Embed):
       raise TypeError(f"Embed template must be a subclass of discord.Embed not {self.embed_template!r}")
     super().__init__(**options)
     
@@ -14,7 +13,7 @@ class MinimalEmbedHelp(commands.MinimalHelpCommand):
     channel = self.get_destination()
     embeds = []
     for page in self.paginator.pages:
-      e = discord.Embed(description=page)
+      e = self.embed_template(description=page)
       if self.options.get("color"):
       	e.color=self.options.get("color")
       embeds.append(e)
@@ -25,7 +24,7 @@ class DefaultEmbedHelp(commands.DefaultHelpCommand):
   def __init__(self, **options):
     self.options = options
     self.embed_template = options.get("embed_template", discord.Embed)
-    if not isinstance(self.embed_template, discord.Embed):
+    if not issubclass(self.embed_template, discord.Embed):
       raise TypeError(f"Embed template must be a subclass of discord.Embed not {type(self.embed_template)!r}")
     super().__init__(**options)
     
@@ -33,7 +32,7 @@ class DefaultEmbedHelp(commands.DefaultHelpCommand):
     channel = self.get_destination()
     embeds = []
     for page in self.paginator.pages:
-      e = discord.Embed(description=page)
+      e = self.embed_template(description=page)
       if self.options.get("color"):
       	e.color=self.options.get("color")
       embeds.append(e)

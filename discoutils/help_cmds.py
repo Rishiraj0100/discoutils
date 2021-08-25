@@ -5,8 +5,9 @@ class MinimalEmbedHelp(commands.MinimalHelpCommand):
   def __init__(self, **options):
     self.options = options
     self.embed_template = options.get("embed_template", discord.Embed) or discord.Embed
+    print(type(self.embed_template))
     if not isinstance(self.embed_template, discord.Embed):
-      raise TypeError(f"Embed template must be a subclass of discord.Embed not {type(self.embed_template)!r}")
+      raise TypeError(f"Embed template must be a subclass of discord.Embed not {self.embed_template!r}")
     super().__init__(**options)
     
   async def send_pages(self):

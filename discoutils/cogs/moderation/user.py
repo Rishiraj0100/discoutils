@@ -4,6 +4,9 @@ from .. import BaseCog
 import asyncio
 import typing
 
+
+__all__ = ("usermod")
+
 class usermod(BaseCog, name="moderation"):
   @commands.command()
   @commands.has_permissions(kick_members = True)

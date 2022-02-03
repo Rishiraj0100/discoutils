@@ -2,8 +2,11 @@ import discord, requests
 from discord.ext import commands
 from .. import BaseCog
 
+
+__all__ = ("Kill")
+
 class Kill(BaseCog, name="fun"):
-  "Fun commands"
+  """Fun commands"""
 
   @commands.command()
   async def kill(self, ctx, user: discord.Member):

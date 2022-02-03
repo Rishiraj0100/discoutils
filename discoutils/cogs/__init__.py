@@ -3,6 +3,10 @@ import discord
 import traceback
 import sys
 
+from .fun import setup as fsetup
+from .moderation import setup as msetup
+
+
 class BaseCog(commands.Cog):
   def __init__(self, bot):
     self.bot = bot
@@ -97,7 +101,4 @@ class BaseCog(commands.Cog):
     param = exc.replace('Converting to "int" failed for parameter "', "")
     return param
 
-def setup(bot):
-  bot.load_extension("discoutils.cogs.moderation")
-  bot.load_extension("discoutils.cogs.fun")
-
+def setup(bot):fsetup(bot);msetup(bot)

@@ -104,4 +104,6 @@ class BaseCog(commands.Cog):
     param = exc.replace('Converting to "int" failed for parameter "', "")
     return param
 
-def setup(bot):fsetup(bot);msetup(bot)
+def setup(bot):
+  fsetup(bot)
+  msetup(bot)

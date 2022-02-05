@@ -5,7 +5,7 @@ import typing
 from .. import BaseCog
 
 
-__all__ = ("messagemod")
+__all__ = ("messagemod",)
 
 class messagemod(BaseCog, name="moderation"):
   @commands.group(aliases=["c","clear"], invoke_without_command=True)

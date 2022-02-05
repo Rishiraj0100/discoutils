@@ -5,7 +5,7 @@ import asyncio
 import typing
 
 
-__all__ = ("usermod")
+__all__ = ("usermod",)
 
 class usermod(BaseCog, name="moderation"):
   @commands.command()

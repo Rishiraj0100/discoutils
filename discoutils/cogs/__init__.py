@@ -3,12 +3,6 @@ import discord
 import traceback
 import sys
 
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-  from .fun import setup as fsetup
-  from .moderation import setup as msetup
-
 
 class BaseCog(commands.Cog):
   def __init__(self, bot):
@@ -105,5 +99,8 @@ class BaseCog(commands.Cog):
     return param
 
 def setup(bot):
+  from .fun import setup as fsetup
+  from .moderation import setup as msetup
+
   fsetup(bot)
   msetup(bot)

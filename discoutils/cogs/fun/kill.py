@@ -3,7 +3,7 @@ from discord.ext import commands
 from .. import BaseCog
 
 
-__all__ = ("Kill")
+__all__ = ("Kill",)
 
 class Kill(BaseCog, name="fun"):
   """Fun commands"""
